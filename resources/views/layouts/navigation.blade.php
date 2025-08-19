@@ -21,6 +21,10 @@
                     <x-nav-link :href="route('admin.posts.index')" :active="request()->routeIs('admin.posts.*')">
                         記事管理
                     </x-nav-link>
+
+                    <x-nav-link :href="route('admin.tasks.index')" :active="request()->routeIs('admin.posts.*')">
+                        記事作成
+                    </x-nav-link>
                 </div>
             </div>
 

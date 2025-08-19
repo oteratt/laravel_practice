@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\UserController; // UserControllerを使うために追記
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TaskController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,6 +31,13 @@ Route::middleware('auth')->group(function () {
     });
     // 削除処理の実行 (DELETEリクエスト)
     Route::delete('/admin/posts/{id}/delete', [PostController::class, 'destroy'])->name('admin.posts.delete');
+
+    //課題作成
+    Route::get('/admin/tasks', [TaskController::class, 'index'])->name('admin.tasks.index');
+    Route::get('/admin/tasks/detail/{id}', [TaskController::class, 'show'])->name('admin.tasks.show');
+    Route::get('/admin/tasks/create', [TaskController::class, 'create'])->name('admin.tasks.create');
+    Route::post('/admin/tasks/store', [TaskController::class, 'store'])->name('admin.tasks.store');
+
 
 require __DIR__.'/auth.php';
 
