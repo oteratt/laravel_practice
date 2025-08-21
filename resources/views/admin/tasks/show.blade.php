@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold text-gray-800">
-            記事詳細（ID: {{ $task->id }}）
+            タスク詳細（ID: {{ $task->id }}）
         </h2>
     </x-slot>
 
@@ -13,8 +13,8 @@
                     <p class="mb-2"><strong>内容:</strong>{{ $task->content }}</p>
                     <p class="mb-2"><strong>対応期限:</strong>{{ (new \Carbon\Carbon($task->deadline_at))->format('Y-m-d') }}</p>
                     <p class="mb-2"><strong>対応日時:</strong> {{ $task->support_at ? (new \Carbon\Carbon($task->support_at))->format('Y-m-d') : ' ' }}</p>
-                    <p class="mb-2"><strong>優先度:</strong>{{ $task->priority }}</p>
-                    <p class="mb-2"><strong>ステータス:</strong>{{ $task->status }}</p>
+                    <p class="mb-2"><strong>優先度:</strong>{{ $priority[$task->priority] }}</p>
+                    <p class="mb-2"><strong>ステータス:</strong>{{ $status[$task->status] }}</p>
                     <p class="mb-2"><strong>作成日時:</strong>{{ $task->created_at ? (new \Carbon\Carbon($task->created_at))->format('Y-m-d H:i:s') : ' '}}</p>
                     <p class="mb-2"><strong>更新日時:</strong>{{ $task->updated_at ? (new \Carbon\Carbon($task->updated_at))->format('Y-m-d H:i:s') : ' '}}</p>
                     <div class="mt-4">

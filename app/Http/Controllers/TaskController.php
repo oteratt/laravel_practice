@@ -11,14 +11,18 @@ class TaskController extends Controller
     public function index(){  //一覧
 
         $tasks = Task::all();
-        return view('admin.tasks.index', compact('tasks'));
+        $status = config('const.task.status');
+        $priority = config('const.task.priority');
+        return view('admin.tasks.index', compact('tasks','status', 'priority'));
 
     }
 
     public function show($id){  //詳細
 
         $task = Task::findOrFail($id);
-        return view('admin.tasks.show', compact('task'));
+        $status = config('const.task.status');
+        $priority = config('const.task.priority');
+        return view('admin.tasks.show', compact('task', 'status', 'priority'));
     }
 
     public function create(){  //作成
@@ -85,6 +89,8 @@ class TaskController extends Controller
             'content' =>'required|max:1000',
             'deadline_at' => 'required|date_format:Y-m-d\TH:i',
             'support_at' => 'date_format:Y-m-d\TH:i',
+            'priority' => 'required',
+            'status' => 'required',
         ];
 
         $messages = [
@@ -98,6 +104,8 @@ class TaskController extends Controller
             'content' => '内容',
             'deadline_at' => '対応期限',
             'support_at' => '対応日時',
+            'priority' => '優先度',
+            'status' => 'ステータス',
         ];
 
         return Validator::make($request->all(), $rules, $messages, $attributes);

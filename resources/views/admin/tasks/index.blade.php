@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold text-gray-800">
-            記事一覧
+            タスク一覧
         </h2>
     </x-slot>
 
@@ -39,8 +39,9 @@
                                     <td class="border px-4 py-2">{{ $val->id }}</td>
                                     <td class="border px-4 py-2">{{ $val->title }}</td>
                                     <td class="border px-4 py-2">{{ $val->deadline_at }}</td>
-                                    <td class="border px-4 py-2">{{ $val->priority }}</td>
-                                    <td class="border px-4 py-2">{{ $val->status }}</td>
+                                    
+                                    <td class="border px-4 py-2">{{ $priority[$val->priority] }}</td> {{-- 文字の方を表示させました。--}}
+                                    <td class="border px-4 py-2">{{ $status[$val->status] }}</td>
                                     <td class="border px-4 py-2">{{ $val->updated_at ? (new \Carbon\Carbon($val->updated_at))->format('Y-m-d H:i:s') : ' ' }}</td>
 
                                     <td class="border px-4 py-2 flex items-center justify-center space-x-2">
