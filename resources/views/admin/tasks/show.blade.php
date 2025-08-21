@@ -18,8 +18,8 @@
                     <p class="mb-2"><strong>作成日時:</strong>{{ $task->created_at ? (new \Carbon\Carbon($task->created_at))->format('Y-m-d H:i:s') : ' '}}</p>
                     <p class="mb-2"><strong>更新日時:</strong>{{ $task->updated_at ? (new \Carbon\Carbon($task->updated_at))->format('Y-m-d H:i:s') : ' '}}</p>
                     <div class="mt-4">
-                        <strong>本文:</strong>
-                        <p class="mt-2 whitespace-pre-line">{{ $task->body }}</p>
+                        
+                        
                     </div>
                 </div>
             </div>

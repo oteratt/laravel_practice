@@ -34,10 +34,12 @@ Route::middleware('auth')->group(function () {
 
     //課題作成
     Route::get('/admin/tasks', [TaskController::class, 'index'])->name('admin.tasks.index');
-    Route::get('/admin/tasks/detail/{id}', [TaskController::class, 'show'])->name('admin.tasks.show');
+    Route::get('/admin/tasks/{id}/detail', [TaskController::class, 'show'])->name('admin.tasks.show');
     Route::get('/admin/tasks/create', [TaskController::class, 'create'])->name('admin.tasks.create');
     Route::post('/admin/tasks/store', [TaskController::class, 'store'])->name('admin.tasks.store');
-
+    Route::get('/admin/tasks/{id}/edit', [TaskController::class, 'edit'])->name('admin.tasks.edit');
+    Route::put('admin/tasks/{id}/update', [TaskController::class, 'update'])->name('admin.tasks.update');
+    Route::delete('admin/tasks/{id}/delete', [TaskController::class, 'destroy'])->name('admin.tasks.delete');
 
 require __DIR__.'/auth.php';
 
