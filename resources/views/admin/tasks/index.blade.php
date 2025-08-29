@@ -27,6 +27,7 @@
                             <tr>
                                 <th class="border px-4 py-2">ID</th>
                                 <th class="border px-4 py-2">タイトル</th>
+                                <th class="border px-4 py-2">担当者</th>
                                 <th class="border px-4 py-2">対応期限</th>
                                 <th class="border px-4 py-2">優先度</th>
                                 <th class="border px-4 py-2">ステータス</th>
@@ -38,8 +39,8 @@
                                 <tr>
                                     <td class="border px-4 py-2">{{ $val->id }}</td>
                                     <td class="border px-4 py-2">{{ $val->title }}</td>
-                                    <td class="border px-4 py-2">{{ $val->deadline_at }}</td>
-                                    
+                                    <td class="border px-4 py-2">{{ $val->user->name }}</td>
+                                    <td class="border px-4 py-2">{{ $val->deadline_at }}</td>                                  
                                     <td class="border px-4 py-2">{{ $priority[$val->priority] }}</td> {{-- 文字の方を表示させました。--}}
                                     <td class="border px-4 py-2">{{ $status[$val->status] }}</td>
                                     <td class="border px-4 py-2">{{ $val->updated_at ? (new \Carbon\Carbon($val->updated_at))->format('Y-m-d H:i:s') : ' ' }}</td>

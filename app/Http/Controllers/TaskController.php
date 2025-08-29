@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 class TaskController extends Controller
 {
@@ -17,6 +18,8 @@ class TaskController extends Controller
         //優先度とステータスを日本語で表示させたいので、index.bladeに値を持ってくるために記入。
         $status = config('const.task.status');
         $priority = config('const.task.priority');
+
+        //$admin = Task::with('user_id')
 
         //viewで書かれているURLで表示。'admin.tasks.index'はルートファイルの時に名前指定したもの。
         return view('admin.tasks.index', compact('tasks','status', 'priority'));
@@ -41,8 +44,10 @@ class TaskController extends Controller
         //優先度とステータスを選んで登録するために、create.bladeに値を持ってくるために記入。
         $status = config('const.task.status');
         $priority = config('const.task.priority');
+        $user = User::find(1);
 
-        return view('admin.tasks.create', compact('status', 'priority'));
+
+        return view('admin.tasks.create', compact('status', 'priority','user'));
     }
 
     //登録画面のバリデーションと登録
@@ -79,8 +84,9 @@ class TaskController extends Controller
         //優先度とステータスを表示して編集するために、create.bladeに値を持ってくるため記入。
         $status = config('const.task.status');
         $priority = config('const.task.priority');
+        $user = User::find(1);
 
-        return view('admin.tasks.create', compact('task', 'status', 'priority'));
+        return view('admin.tasks.create', compact('task', 'status', 'priority', 'user'));
     }
 
     //編集画面のバリデーションと更新

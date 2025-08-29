@@ -11,6 +11,7 @@
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-bold mb-4">{{ $task->title }}</h3>
                     <p class="mb-2"><strong>内容:</strong>{{ $task->content }}</p>
+                    <p class="mb-2"><strong>担当者:</strong>{{ $task->user->name }}</p>
                     <p class="mb-2"><strong>対応期限:</strong>{{ (new \Carbon\Carbon($task->deadline_at))->format('Y-m-d') }}</p>
                     <p class="mb-2"><strong>対応日時:</strong> {{ $task->support_at ? (new \Carbon\Carbon($task->support_at))->format('Y-m-d') : ' ' }}</p>
                     <p class="mb-2"><strong>優先度:</strong>{{ $priority[$task->priority] }}</p>
